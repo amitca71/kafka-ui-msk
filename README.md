@@ -7,5 +7,5 @@ prerequisite:
 $BOOTSTRAP_SERVERS - the IAM servers from the kafka configuration
 $AWS_PROFILE_NAME/$AWS_ACCESS_KEY_ID/$AWS_SECRET_KEY - the aws usermname of the priviliged account (with the priviliges to access MSK)
 
-3. docker-compose up -d
+3. docker-compose -f kafka-ui.yaml up -d
 4. localhost:8080
