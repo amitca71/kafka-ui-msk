@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8080:8080
+    environment:
+     - KAFKA_CLUSTERS_0_NAME=staging
+     - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=$BOOTSTRAP_SERVERS
+     - KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL=SASL_SSL
+     - KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM=AWS_MSK_IAM
+     - KAFKA_CLUSTERS_0_PROPERTIES_SASL_CLIENT_CALLBACK_HANDLER_CLASS=software.amazon.msk.auth.iam.IAMClientCallbackHandler
+     - KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG=software.amazon.msk.auth.iam.IAMLoginModule required awsProfileName=$AWS_PROFILE_NAME;
+     - KAFKA_CLUSTERS_0_READONLY=true
+     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID   
+     - AWS_SECRET_KEY=$AWS_SECRET_KEY
+
+     
+
+
